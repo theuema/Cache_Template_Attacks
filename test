@@ -1,0 +1,28 @@
+#!/bin/bash
+
+LOGFOLDER="logs/"
+PRETAG="calibration_hist_"
+POSTAG="current"
+
+echo "----------------------------------------------------------------------"
+echo "Make sure you built every tool needed!"
+echo "Commands:"
+echo "Start calibration tool and store log file:    calibration log_file_name"
+echo "----------------------------------------------------------------------"
+
+read c
+b=( $c )
+
+if [[ ${b[0]} == "calibration" ]] && [[ ${b[1]} ]]; then
+  calibration/./calibration
+  mv -f $LOGFOLDER$PRETAG$POSTAG $LOGFOLDER$PRETAG${b[1]}
+  echo "----------------------------------------------------------------------"
+  echo "Log file stored: "$LOGFOLDER$PRETAG${b[1]}
+  echo "Start another calibration? (y/n)"
+  read startother
+  if [[ $startother == "y" ]]; then
+    ./test
+  fi
+fi
+
+exit 1

@@ -51,7 +51,7 @@ int main(int argc, char** argv)
   size_t miss_min_i = 0;
   for (int i = 0; i < 80; ++i)
   {
-    FILE *fc = fopen("logs/calibration_hist_current.txt", "a");
+    FILE *fc = fopen("logs/calibration_hist_current", "a");
     assert(fc != NULL);
     fprintf(fc, "%3d: %10zu %10zu\n",i*5,hit_histogram[i],miss_histogram[i]);
     fclose(fc);
@@ -65,7 +65,7 @@ int main(int argc, char** argv)
       miss_min_i = i;
   }
   if (miss_min_i > hit_max_i+4){
-    FILE *fc = fopen("logs/calibration_hist_current.txt", "a");
+    FILE *fc = fopen("logs/calibration_hist_current", "a");
     assert(fc != NULL);
     fprintf(fc, "Flush+Reload possible!\n");
     fclose(fc);
@@ -73,7 +73,7 @@ int main(int argc, char** argv)
   }
 
   else if (miss_min_i > hit_max_i+2){
-    FILE *fc = fopen("logs/calibration_hist_current.txt", "a");
+    FILE *fc = fopen("logs/calibration_hist_current", "a");
     assert(fc != NULL);
     fprintf(fc, "Flush+Reload probably possible!\n");
     fclose(fc);
@@ -81,7 +81,7 @@ int main(int argc, char** argv)
   }
 
   else if (miss_min_i < hit_max_i+2){
-    FILE *fc = fopen("logs/calibration_hist_current.txt", "a");
+    FILE *fc = fopen("logs/calibration_hist_current", "a");
     assert(fc != NULL);
     fprintf(fc, "Flush+Reload maybe not possible!\n");
     fclose(fc);
@@ -89,7 +89,7 @@ int main(int argc, char** argv)
   }
 
   else{
-    FILE *fc = fopen("logs/calibration_hist_current.txt", "a");
+    FILE *fc = fopen("logs/calibration_hist_current", "a");
     assert(fc != NULL);
     fprintf(fc, "Flush+Reload not possible!\n");
     fclose(fc);
@@ -107,7 +107,7 @@ int main(int argc, char** argv)
     }
   }
 
-  FILE *fc = fopen("logs/calibration_hist_current.txt", "a");
+  FILE *fc = fopen("logs/calibration_hist_current", "a");
   assert(fc != NULL);
   fprintf(fc, "The lower the threshold, the lower the number of false positives.\n");
   fprintf(fc, "Suggested cache hit/miss threshold: %zu\n",min_i * 5);
