@@ -3,6 +3,7 @@
 #include <string.h>
 #include <sched.h>
 #include <assert.h>
+
 size_t array[5*1024];
 
 void toggle_benchmark(void* p) {
