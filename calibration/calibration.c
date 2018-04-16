@@ -53,7 +53,7 @@ int main(int argc, char** argv)
   {
     FILE *fc = fopen("logs/calibration_hist_current", "a");
     assert(fc != NULL);
-    fprintf(fc, "%3zu: %10zu %10zu\n",i,hit_histogram[i],miss_histogram[i]);
+    fprintf(fc, "%3zu: %10zu %10zu\n",i*5,hit_histogram[i],miss_histogram[i]);
     fclose(fc);
     //printf("%3d: %10zu %10zu\n",i*5,hit_histogram[i],miss_histogram[i]);
     if (hit_max < hit_histogram[i])
